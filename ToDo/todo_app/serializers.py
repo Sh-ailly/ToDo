@@ -9,7 +9,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         model = CustomUser
         fields = ['username', 'email', 'password']
 
-    def create(self, validated_data):
+    def create(self, validated_data):#This method overrides the default create() method to ensure that the user is created with a hashed password.
         user = CustomUser.objects.create_user(
             username=validated_data['username'],
             email=validated_data['email'],
